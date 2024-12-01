@@ -1,0 +1,8 @@
+actual_url=
+budget_id=
+actual_password=
+budget_password=
+mysql_host=
+mysql_user=
+mysql_password=
+mysql_db=
