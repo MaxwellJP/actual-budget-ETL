@@ -70,13 +70,13 @@ def map_sqlite_to_mysql_type(sqlite_type):
     if 'int' in sqlite_type:
         return 'BIGINT'
     elif 'char' in sqlite_type or 'text' in sqlite_type:
-        return 'VARCHAR(255)'
+        return 'TEXT'
     elif 'real' in sqlite_type or 'double' in sqlite_type or 'float' in sqlite_type:
         return 'FLOAT'
     elif 'blob' in sqlite_type:
         return 'BLOB'
     else:
-        return 'VARCHAR(255)'
+        return 'TEXT'
     
 def get_unique_columns(table_name, sqlite_cursor):
     unique_key_mapping = {
@@ -103,7 +103,6 @@ def migrate_sqlite_to_mysql(sqlite_file, env):
             password=env.get("MYSQL_PASSWORD"),
             database=env.get("MYSQL_DB")
         )
-
         mysql_cursor = mysql_conn.cursor()
 
         sqlite_cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
